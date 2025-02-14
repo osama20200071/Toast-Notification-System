@@ -1,3 +1,4 @@
+import React from "react";
 import { useAppDispatch } from "../../store/hooks";
 import { addToast } from "../../store/toast/toastsSlice";
 import RadioInput from "./RadioInput";
@@ -20,6 +21,7 @@ const CreateToast = () => {
       delay: 1000 * Number(formData.get("delay")), // convert to ms
       duration: 1000 * Number(formData.get("duration")), // convert to ms
       showProgressBar: formData.get("showProgressBar") === "on",
+      showCloseButton: formData.get("showCloseButton") === "on",
     };
     dispatch(addToast(toast));
     form.reset();
@@ -66,7 +68,7 @@ const CreateToast = () => {
             <RadioInput name="position" value="bottom-left" />
           </div>
         </div>
-        <div className="flex  items-start justify-between">
+        <div className="grid grid-cols-2 gap-y-5">
           <div className="flex items-center gap-3">
             <label className="text-slate-500 select-none text-sm">
               Duration (in seconds){" "}
@@ -105,6 +107,21 @@ const CreateToast = () => {
               type="checkbox"
               name="showProgressBar"
               id="showProgressBar"
+              defaultChecked
+            />
+          </div>
+          <div className="flex items-center gap-2">
+            <label
+              className="text-slate-500 select-none text-sm"
+              htmlFor="showCloseButton"
+            >
+              Show Close Button
+            </label>
+            <input
+              className="text-slate-500 rounded-md focus:outline-slate-300 "
+              type="checkbox"
+              name="showCloseButton"
+              id="showCloseButton"
               defaultChecked
             />
           </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import { ToastPosition, ToastType } from "./ToastItem";
 
 // Create a mapping between the name and the corresponding value type

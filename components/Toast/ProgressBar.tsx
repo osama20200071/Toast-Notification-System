@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { motion, useAnimation } from "motion/react";
 import { ToastType } from "./ToastItem";
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CloseIcon from "../../Icons/CloseIcon";
 import { useAppDispatch } from "../../store/hooks";
 import { removeToast } from "../../store/toast/toastsSlice";
@@ -23,6 +23,7 @@ export type ToastItemProps = {
   duration?: number;
   delay?: number;
   showProgressBar?: boolean;
+  showCloseButton?: boolean;
 };
 
 const typeMap: Record<ToastType, string> = {
@@ -56,6 +57,7 @@ const ToastItem = ({
   delay = 0,
   position,
   showProgressBar = true,
+  showCloseButton = true,
 }: ToastItemProps) => {
   const dispatch = useAppDispatch();
   const [startRender, setStartRender] = useState(false);
@@ -93,9 +95,11 @@ const ToastItem = ({
           {title ?? type}
         </h3>
         <p>{message}</p>
-        <button onClick={closeToastHandler}>
-          <CloseIcon />
-        </button>
+        {showCloseButton && (
+          <button onClick={closeToastHandler}>
+            <CloseIcon />
+          </button>
+        )}
         <ProgressBar
           duration={duration}
           closeToast={closeToastHandler}
