@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import CloseIcon from "../../Icons/CloseIcon";
 import { useAppDispatch } from "../../store/hooks";
 import { removeToast } from "../../store/toast/toastsSlice";
